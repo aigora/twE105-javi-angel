@@ -1,11 +1,22 @@
-# Título del trabajo
+﻿# Título del trabajo
 
-Descripción breve del proyecto a realizar (2-3 frases).
+Programa taller de coches.
+
+Se trata de un programa que gestiona los vehículos que hay en un taller y administra el área al que se deben dirigir.
+También es capaz de darnos información sobre los tiempos de reparación y el presupuesto total.
 
 ## Integrantes del equipo
 
-Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
+- angelgomezmunoz
+
+- Javs24
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+- Realizar una función que organice la información de las matrículas introducidas.
+
+- Asignación de los vehículos a las distintas áreas del taller.
+
+- Administración de reparaciones.
+
+- Ofrecer información sobre precios
