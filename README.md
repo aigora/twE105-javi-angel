@@ -1,15 +1,13 @@
-﻿# Título del trabajo
-
-Programa taller de coches.
+﻿##DATACOCHES
 
 Se trata de un programa que gestiona los vehículos que hay en un taller y administra el área al que se deben dirigir.
 También es capaz de darnos información sobre los tiempos de reparación y el presupuesto total.
 
 ## Integrantes del equipo
 
-- angelgomezmunoz
+- @angelgomezmunoz
 
-- Javs24
+- @Javs24
 
 ## Objetivos del trabajo
 
