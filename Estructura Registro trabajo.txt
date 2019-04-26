@@ -18,29 +18,31 @@ struct Fecha {
 	int cochesasignados;
  };
  void registro(struct Usuario usuarios[], int i);
-int main() {
+void main() {
 	system("chcp 1252");
 	system("cls");
-	Usuario user[3] = { { "Javs", "contra", "Mecánico", 3 }, {"Ángel", "1234", "Administrador", 0 } };
+	int num_user = 2;
+	struct Usuario user[3] = { { "Javs", "contra", "Mecánico", 3 }, {"Ángel", "1234", "Administrador", 0 } };
 	FILE *pf;
-	int i;
-	pf = fopen("iniciosesiontest.txt", "w");
-	if (pf == NULL)
-	{// Si el resultado es NULL mensaje de error
-		printf("Error al abrir el fichero.\n");
-		return -1;
+	int i, caso;
+	prinf("1| Regristrarse\n\n2| Salir");
+	scanf("%d", &caso);
+	switch (caso) {
+	case 1: {
+		void registro(user, num_user);
+		num_user++;
+		break;
 	}
-	else {
-		for (i = 0; i < 3; i++) {
-			{// Si ha funcionado, comienza escritura
-				fprintf(pf, " %s, %s, %s, %d",
-					user[i].nombre, user[i].password, user[i].ocupacion, user[i].cochesasignados);
-				fclose(pf); // Cerramos fichero
-				return 0;
-			}
-		}
+	case 2:
+		printf("Saliendo del programa...\n");
+		//animacionbasic;
+		//guardar(usuarios, , num_user);
+		return 0;
+
 	}
-		
+
+	
+	
 }
 
 void registro(struct Usuario usuarios[], int i) {
