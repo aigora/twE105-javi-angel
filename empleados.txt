@@ -1,0 +1,3 @@
+Javs,Mecánico,contra
+Ángel,Administrador,seña
+Antonio,Chapista,toni
