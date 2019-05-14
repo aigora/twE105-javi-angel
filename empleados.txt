@@ -1,3 +1,4 @@
-Javs,Mec·nico,contra
-¡ngel,Administrador,seÒa
+√Ångel,Administrador,se√±a
+Javs,Mec√°nico,contra
 Antonio,Chapista,toni
+Deivid17,Pintor,lijadora
