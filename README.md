@@ -9,8 +9,6 @@ También es capaz de darnos información sobre los tiempos de reparación y el p
 
 - @Javs24 (Javier Cabañas Rodríguez)
 
-- @AntCos (Antonio Aragón Ros)
-
 ## Objetivos del trabajo
 
 - Realizar una función que organice la información de las matrículas introducidas.
