@@ -1,1 +1,4 @@
-Jorge Mart�nez Bris,Jorg3,M,20/8/1996,123456JMB�
+Laura Gómez Serranillo,Laura33,F,13/7/1968,tristres
+Luis Prieto Lobato,luprilo,O,20/5/1954,dentífrico
+Jorge Martínez Bris,jorgito12,M,12/4/1984,merengue
+Javier Fernández Ochoa,javiruli,M,28/1/2001,Javi18
