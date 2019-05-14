@@ -1,1 +1,8 @@
-Jorge Mart�nez Bris,coche 1,MercedesP�,CLA 45 AMG�,2345KVM,1254
+Laura Gómez Serranillo,Opel,Astra H,1378FTS,128659
+Jorge Martínez Bris,Fiat,Punto,7337BDS,300001
+Jorge Martínez Bris,Mercedes,CLA45 AMG,2345KVM,1843
+Javier Fernández Ochoa,Renault,Megane,2345DSR,639291
+Luis Prieto Lobato,Citroen,C4 Picasso,9534BCD,342698
+Luis Prieto Lobato,Peugeot,308,7345JPS,54607
+Jorge Martínez Bris,Alfa Romeo,Stelvio,7451KDR,47239
+Javier Fernández Ochoa,Nissan,Navara,0023CRZ,267893
