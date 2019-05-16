@@ -1,0 +1,6 @@
+1,Revisión básica(aceite y filtro),0.5,30
+2,Cambio de neumáticos,0.7,180
+3,Equilibrado,0.5,0
+4,Paralelo,0.6,0
+5,Revisión completa(aceite y todos los filtros),1,70
+6,Cambio de bujías,0.3,25

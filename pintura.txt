@@ -1,0 +1,10 @@
+1,Pintar paragolpes delantero,1.7,100
+2,Pintar paragolpes trasero,1.5,90
+3,Pintar capó,2.2,140
+4,Pintar aleta delantera,1.2,70
+5,Pintar costado trasero,2.1,120
+6,Pintar llanta,1.5,40
+7,Pintar techo,3,200
+8,Pintar puerta,1.5,90
+9,Pintar tapa retrovisor,0.3,10
+10,Pulido completo,1,60
