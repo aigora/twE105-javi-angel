@@ -56,10 +56,13 @@ void ConsultarCita(char *user);
 void Mes(int mes, int d); 
 void Calendario();
 void Vaciar(char cadena[]);
+void animacionBuscar();
+void animacionGuardar();
+void animacionBasica();
 
 void main(){
-	system("chcp 1252");//CÛdigo para que se puedan imprimir caracteres especiales, como letras con tildes y Ò
-    system("COLOR F0");//CÛdigo para cambiar el color del fondo (1er dÌgito) y de las letras (2o digito) (0 = Negro, 1 = Azul, 2 = Verde, 3 = Aqua, 4 = Rojo, 5 = P˙rpura, 6 = Amarillo, 7 = Blanco, 8 =Gris, 9 = Azul Claro, A = Luz Verde, B = Aqua Luz, C = Rojo, D = Luz Violeta, E = = Amarillo Claro, F = Blanco Brillante)
+	system("chcp 1252");//C√≥digo para que se puedan imprimir caracteres especiales, como letras con tildes y √±
+    system("COLOR F0");//C√≥digo para cambiar el color del fondo (1er d√≠gito) y de las letras (2o digito) (0 = Negro, 1 = Azul, 2 = Verde, 3 = Aqua, 4 = Rojo, 5 = P√∫rpura, 6 = Amarillo, 7 = Blanco, 8 =Gris, 9 = Azul Claro, A = Luz Verde, B = Aqua Luz, C = Rojo, D = Luz Violeta, E = = Amarillo Claro, F = Blanco Brillante)
 	system("cls");
     
     
@@ -86,7 +89,7 @@ void main(){
 			"        ..........`.-`           `:-`.....................................................-`           `--`             "
 			"                     .-.``   ``.--`````````````````````````````````````````````````````    .-```   ``.-.                "
 			"      -----------------:::::::::------------------------------------------------------------::::::::::---------------   "
-			"                .ydyy.      yo    -dshhyh`    ss      -ysss`   :yy+     .ysss.  y-   y-  yhssss-  +hsssy. Æ             "
+			"                .ydyy.      yo    -dshhyh`    ss      -ysss`   :yy+     .ysss.  y-   y-  yhssss-  +hsssy. ¬Æ             "
 			"                 .M./m.    /NN.   `/ ho`/    :NN-    :m-      :m:.d+   .m/      m/   N/  do       :d+` :.               "
 			"                 .M. sh   `N/yy      ho      m+od    N/       m+  .M.  do       mhsssN/  ddso      `sh-                 "
 			"                 .M.-m:   sNsyM:     ho     +MsyM/   od`      +d.`yy   /m-      m/```N/  do`      `` -do`               "
@@ -112,11 +115,11 @@ int MenuAcceso(char *user){
 	system("chcp 1252");
 	int opcion, opcion1;
 	do{
-		system("cls");//CÛdigo para limpiar pantalla
+		system("cls");//C√≥digo para limpiar pantalla
 		printf("DATACOCHES\n\n");
-	    printf("øQuÈ desea hacer?\n\n");
+	    printf("¬øQu√© desea hacer?\n\n");
 	    
-        printf("TECLA   ACCI”N\n  1-    Iniciar sesiÛn.\n  0-    Salir del programa.\n\n   OPCI”N: ");
+        printf("TECLA   ACCI√ìN\n  1-    Iniciar sesi√≥n.\n  0-    Salir del programa.\n\n   OPCI√ìN: ");
         scanf("%i", &opcion);
 	    fflush(stdin);
         
@@ -148,11 +151,11 @@ void MenuEmpleado(char *user){
     	system("cls");
         printf("DATACOCHES\n\n");
         printf("Logueado como %s\n\n", user);
-    	printf("øQuÈ desea hacer?\n\n");
+    	printf("¬øQu√© desea hacer?\n\n");
     	
-	    printf("TECLA   ACCI”N\n  1-    Consultar datos sobre un vehÌculo.\n  2-    Consultar estado de un vehÌculo.\n  " 
+	    printf("TECLA   ACCI√ìN\n  1-    Consultar datos sobre un veh√≠culo.\n  2-    Consultar estado de un veh√≠culo.\n  " 
 		"3-    Consultar calendario.\n  4-    Generar nueva cita.\n  5-    Crear nuevo empleado.\n  6-    Crear nuevo cliente.\n"
-		"  7-    Crear nuevo vehÌculo.\n  8-    Modificar estado de un vehÌculo.\n  9-    AÒadir proceso.\n  0-    Volver.\n\n   OPCI”N: ");
+		"  7-    Crear nuevo veh√≠culo.\n  8-    Modificar estado de un veh√≠culo.\n  9-    A√±adir proceso.\n  0-    Volver.\n\n   OPCI√ìN: ");
 	    scanf("%c" ,&opcion);
 	    fflush(stdin);
 	    printf("\n");
@@ -183,9 +186,9 @@ void MenuEmpleado(char *user){
 		    	printf("MODIFICAR ESTADO\n");
 		    	break;
 		    case 9:
-		    	printf("A—ADIR PROCESO\n");
+		    	printf("A√ëADIR PROCESO\n");
 		    case '0':
-		    	printf("°SesiÛn cerrada!\n\n");
+		    	printf("¬°Sesi√≥n cerrada!\n\n");
 		    	break;
     		default:
 	    		printf("Tecla no reconocida.\n\n");
@@ -205,17 +208,17 @@ void MenuCliente(char *user){
     	system("cls");
         printf("DATACOCHES\n\n");
         printf("Cliente: %s\n\n", user);
-    	printf("øQuÈ desea hacer?\n\n");
+    	printf("¬øQu√© desea hacer?\n\n");
 		
-	    printf("TECLA   ACCI”N\n  1-    Consultar estado de un vehÌculo.\n  2-    Consultar citas.\n"
-		"  3-    Generar nueva cita.\n  4-    Listado de precios.\n  0-    Volver.\n\n   OPCI”N: ");
+	    printf("TECLA   ACCI√ìN\n  1-    Consultar estado de un veh√≠culo.\n  2-    Consultar citas.\n"
+		"  3-    Generar nueva cita.\n  4-    Listado de precios.\n  0-    Volver.\n\n   OPCI√ìN: ");
 	    scanf("%i", &opcion);
 	    fflush(stdin);
 	    printf("\n");
 	    switch(opcion)
 	    {
 	    	case 1:
-	    		printf("CONSULTA DE ESTADO\nIntroduzca la matrÌcula del vehÌculo:");
+	    		printf("CONSULTA DE ESTADO\nIntroduzca la matr√≠cula del veh√≠culo:");
 	    		break;
 	    	case 2:
 		    	ConsultarCita(user);
@@ -226,7 +229,7 @@ void MenuCliente(char *user){
 			case 4:
 				printf("LISTADO DE PRECIOS\n");
 			case 0:
-		    	printf("°SesiÛn cerrada!\n\n");
+		    	printf("¬°Sesi√≥n cerrada!\n\n");
 				break;
     		default:
 	    		printf("Tecla no reconocida.\n\n");
@@ -255,12 +258,12 @@ int IniciarSesion(char *user){
 	while(!feof(empleados)){
 		fscanf(empleados, "%[^\n]s", basura);
 		adv = fgetc(empleados);
-		e++;//Contador para saber el n˙mero de empleados
+		e++;//Contador para saber el n√∫mero de empleados
 	}
 	fseek(empleados, 0, SEEK_SET);
 	for(i = 0; i < e; i++){
 		fscanf(empleados, "%[^,]s", emp[i].nombre);
-	   	adv = fgetc(empleados);//Para avanzar una posiciÛn en el fichero
+	   	adv = fgetc(empleados);//Para avanzar una posici√≥n en el fichero
 	    	
     	fscanf(empleados, "%[^,]s", emp[i].ocupacion);
 	   	adv = fgetc(empleados);
@@ -278,9 +281,9 @@ int IniciarSesion(char *user){
 	while(!feof(clientes)){
 		fscanf(clientes, "%[^\n]s", basura);
 		adv = fgetc(clientes);
-		c++;//Contador para saber el n˙mero de clientes
+		c++;//Contador para saber el n√∫mero de clientes
 	}
-	c--;//El bucle cuenta una vez de m·s, por eso restamos 1 al contador
+	c--;//El bucle cuenta una vez de m√°s, por eso restamos 1 al contador
 	fseek(clientes, 0, SEEK_SET);
 	for(i = 0; i < c; i++){
 		fscanf(clientes, "%[^,]s", clie[i].nombre);
@@ -309,7 +312,7 @@ int IniciarSesion(char *user){
 	do{
 	    system("cls");
 		printf("DATACOCHES\n\n");
-	    printf("INICIAR SESI”N\n\n");
+	    printf("INICIAR SESI√ìN\n\n");
 	    
 		aux = 0;
 		printf ("Usuario: ");
@@ -328,14 +331,23 @@ int IniciarSesion(char *user){
 		if(aux == 1){
 			i--;
 			do{
-    	        printf("ContraseÒa: ");
+    	        printf("Contrase√±a: ");
         	    scanf("%30s", cont);
         	    fflush(stdin);
    		    	if(strcmp(emp[i].contrasena, cont) == 0){
 	        		aux = 3;
 	   			    opcion1 = 1;
 	            	strcpy(user, emp[i].nombre);
-    	    		printf("\n°BIENVENIDO!\n\n");
+	            	printf("Iniciando sesi√≥n .\n");
+	            	Sleep(500);
+	            	system("cls");
+	            	printf("Iniciando sesi√≥n . .\n");
+	            	Sleep(500);
+	            	system("cls");
+	            	printf("Iniciando sesi√≥n . . .\n");
+	            	Sleep(500);
+	            	system("cls");
+    	    		printf("\n¬°BIENVENIDO!\n\n");
 	        	}
 	        	else{
 	        		Vaciar(cont);
@@ -345,10 +357,10 @@ int IniciarSesion(char *user){
 	   		    		exit(1);
 					}
 					else if(k == 1){
-						printf("\nContraseÒa incorrecta.\nQueda %i intento\n\n", k);
+						printf("\nContrase√±a incorrecta.\nQueda %i intento\n\n", k);
 					}
 	   		        else{
-	   		        	printf("\nContraseÒa incorrecta.\nQuedan %i intentos\n\n", k);
+	   		        	printf("\nContrase√±a incorrecta.\nQuedan %i intentos\n\n", k);
 					}
 	   		    }
 	   	    }
@@ -357,14 +369,14 @@ int IniciarSesion(char *user){
 		else if(aux == 2){
 			j--;
 			do{
-    	        printf("ContraseÒa: ");
+    	        printf("Contrase√±a: ");
         	    scanf("%30s", cont);
         	    fflush(stdin);
    		    	if(strcmp(clie[j].contrasena, cont) == 0){
 	        		aux = 3;
 	   			    opcion1 = 2;
 	            	strcpy(user, clie[j].nombre);
-    	    		printf("\n°BIENVENIDO!\n\n");
+    	    		printf("\n¬°BIENVENIDO!\n\n");
 	        	}
 	        	else{
 	        		Vaciar(cont);
@@ -374,10 +386,10 @@ int IniciarSesion(char *user){
 	   		    		exit(1);
 					}
 					else if(k == 1){
-						printf("\nContraseÒa incorrecta\nQueda %i intento\n\n", k);
+						printf("\nContrase√±a incorrecta\nQueda %i intento\n\n", k);
 					}
 					else{
-						printf("\nContraseÒa incorrecta\nQuedan %i intentos\n\n", k);
+						printf("\nContrase√±a incorrecta\nQuedan %i intentos\n\n", k);
 					}
 	   		        	
 	   		    }
@@ -424,7 +436,7 @@ void CrearCita(int x, char *user){
     		strcpy(cita.nombre, user);
 		}
 	    do{
-	    	printf("Mes(n∫): ");
+	    	printf("Mes(n¬∫): ");
 		    scanf("%i", &cita.mes);
     		if(cita.mes < 1 || cita.mes > 12){
 	    		printf("\nIntroduzca el mes de nuevo.\n\n");
@@ -434,18 +446,18 @@ void CrearCita(int x, char *user){
 	    while(cita.mes < 1 || cita.mes > 12);
 	    do{
 		    aux1 = 0;
-		    printf("DÌa: ");
+		    printf("D√≠a: ");
 		    scanf("%i", &cita.dia);
 		    if((cita.mes == 1 || cita.mes == 3 || cita.mes == 5 || cita.mes == 7 || cita.mes == 8 || cita.mes == 10 || cita.mes == 12) && (cita.dia < 1 || cita.dia > 31)){
-			    printf("\nIntroduzca el dÌa de nuevo.\n\n");
+			    printf("\nIntroduzca el d√≠a de nuevo.\n\n");
 			    aux1 = 1;
 		    }
 		    else if(cita.mes == 2 && (cita.dia < 1 || cita.dia > 28)){
-			    printf("\nIntroduzca el dÌa de nuevo.\n\n");
+			    printf("\nIntroduzca el d√≠a de nuevo.\n\n");
 			    aux1 = 1;
 		    }
 		    else if((cita.mes == 4 || cita.mes == 6 || cita.mes == 9 || cita.mes == 11) && (cita.dia < 1 || cita.dia > 30)){
-			    printf("\nIntroduzca el dÌa de nuevo.\n\n");
+			    printf("\nIntroduzca el d√≠a de nuevo.\n\n");
 			    aux1 = 1;
 		    }
 		    fflush(stdin);
@@ -460,20 +472,24 @@ void CrearCita(int x, char *user){
 			    aux2 = 1;
 		    }
 		    if (cita.min != 0 && cita.min != 10 && cita.min != 20 && cita.min != 30 && cita.min != 40 && cita.min != 50){
-			    printf("\nLos minutos indicados sÛlo pueden ser 00, 10, 20, 30, 40 y 50.\n\n");
+			    printf("\nLos minutos indicados s√≥lo pueden ser 00, 10, 20, 30, 40 y 50.\n\n");
 			    aux2 = 1;
 		    }
 		    fflush(stdin);
 	    }
 	    while(aux2 == 1);
 	    if(cita.min == 0){
-		    printf("\nLe confirmamos su cita: \nNOMBRE: %s \nHORA: %i:%i%i \nDÕA: %i/%i\n", cita.nombre, cita.hora, cita.min, cita.min, cita.dia, cita.mes);
+	    	animacionBasica;
+	    	system("cls");
+		    printf("\nLe confirmamos su cita: \nNOMBRE: %s \nHORA: %i:%i%i \nD√çA: %i/%i\n", cita.nombre, cita.hora, cita.min, cita.min, cita.dia, cita.mes);
     	}
 	    else{
-	    	printf("\nLe confirmamos su cita: \nNOMBRE: %s \nHORA: %i:%i \nDÕA: %i/%i\n", cita.nombre, cita.hora, cita.min, cita.dia, cita.mes);
+	    	animacionBasica;
+	    	system("cls");
+	    	printf("\nLe confirmamos su cita: \nNOMBRE: %s \nHORA: %i:%i \nD√çA: %i/%i\n", cita.nombre, cita.hora, cita.min, cita.dia, cita.mes);
     	}
 	    
-	    printf("\nøEst· de acuerdo?(Si = s / No = n): ");
+	    printf("\n¬øEst√° de acuerdo?(Si = s / No = n): ");
        	scanf("%c", &res);
        	fflush(stdin);
        	do{
@@ -489,7 +505,7 @@ void CrearCita(int x, char *user){
 	}
 	while(res != 's' || res != 's');
 	
-	printf("\n°Cita confirmada!\n\n");
+	printf("\n¬°Cita confirmada!\n\n");
 	
 	fprintf(citas, "%s,%i:%i,%i/%i\n", cita.nombre, cita.hora, cita.min, cita.dia, cita.mes);
 		
@@ -513,23 +529,24 @@ void CrearEmpleado(){
 	printf("NUEVO EMPLEADO\n");
 	
 	while(i > 0){
-		printf("ContraseÒa de administrador: ");
+		printf("Contrase√±a de administrador: ");
 		scanf("%i", &contrasena);
 		fflush(stdin);
 		if(contrasena == 1111){
         	printf("Nombre de usuario: ");
 			scanf("%s", nom);
 			fflush(stdin);
-			printf("OcupaciÛn: ");
+			printf("Ocupaci√≥n: ");
 			scanf("%s", ocup);
 			fflush(stdin);
-			printf("ContraseÒa: ");
+			printf("Contrase√±a: ");
 			scanf("%s", cont);
 			fflush(stdin);
         	
 			fprintf(empleados, "%s,%s,%s\n", nom, ocup, cont);
-			
-			printf("\n°Empleado registrado correctamente!\n\n");
+			animacionBasica;
+			system("cls");
+			printf("\n¬°Empleado registrado correctamente!\n\n");
 			
 			i = 3;//Ruta de escape
 		}
@@ -538,9 +555,9 @@ void CrearEmpleado(){
 			if(i == 0)
         	printf("\nConsulte con el administrador.\n\n");
 			else if(i == 1)
-			printf("\nContraseÒa incorrecta.\nQueda %i intento\n\n", i);
+			printf("\nContrase√±a incorrecta.\nQueda %i intento\n\n", i);
 			else
-			printf("\nContraseÒa incorrecta.\nQuedan %i intentos\n\n", i);
+			printf("\nContrase√±a incorrecta.\nQuedan %i intentos\n\n", i);
 		}
 	}
 	fclose(empleados);
@@ -568,6 +585,9 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	
 	do{
 		printf("DATACOCHES\n\n");
+		printf("\nCargando p√°gina,\nEspere un momento.\n");
+		Sleep(600);
+		system("cls");
 	    printf("NUEVO CLIENTE\n\n");
 	    
 	    printf("Nombre completo: ");
@@ -586,7 +606,7 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 		}
 		while(sexo != 'M' && sexo != 'F' && sexo != 'O');
 		do{
-			printf("Fecha de nacimiento(dÌa mes aÒo): ");
+			printf("Fecha de nacimiento(d√≠a mes a√±o): ");
 			scanf("%i %i %i", &dia, &mes, &ano);
 	    	fflush(stdin);
 	    	if(((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && (dia < 1 || dia > 31)) || (mes == 2 && (dia < 1 || dia > 28)) 
@@ -596,14 +616,15 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 		}
 		while(((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && (dia < 1 || dia > 31)) || (mes == 2 && (dia < 1 || dia > 28)) 
 		|| ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && (dia < 1 || dia > 30)) || (mes < 1 || mes > 12 || ano < 1900 || ano > 2001));
-		printf("ContraseÒa: ");
+		printf("Contrase√±a: ");
 		scanf("%s", cont);
 	   	fflush(stdin);
-		
-		printf("\nLe confirmamos sus datos: \n\nNOMBRE: %s \nUSUARIO: %s \nSEXO: %c\nFECHA DE NACIMIENTO: %i/%i/%i\nCONTRASE—A: %s\n", nom, us, sexo, dia, mes, ano, cont);
+		animacionBasica;
+        system("cls");
+		printf("\nLe confirmamos sus datos: \n\nNOMBRE: %s \nUSUARIO: %s \nSEXO: %c\nFECHA DE NACIMIENTO: %i/%i/%i\nCONTRASE√ëA: %s\n", nom, us, sexo, dia, mes, ano, cont);
 	    
 	    do{
-		    printf("\nøEst· de acuerdo?(Si = s / No = n): ");
+		    printf("\n¬øEst√° de acuerdo?(Si = s / No = n): ");
 	       	scanf("%c", &res);
 	       	fflush(stdin);
 		    if(res == 'n' || res == 'N'){
@@ -621,11 +642,11 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	while(res != 's' || res != 's');
 		
 	do{
-	   	printf("N˙mero de vehÌculos: ");
+	   	printf("N√∫mero de veh√≠culos: ");
 	   	scanf("%i", &coches);
 		fflush(stdin);
 	   	if(coches < 1){
-	   		printf("\nDebe introducir al menos un vehÌculo\n\n");
+	   		printf("\nDebe introducir al menos un veh√≠culo\n\n");
 		}
 	}
 	while(coches < 1);
@@ -633,34 +654,34 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	for(i = 1; i <= coches; i++){
 		do{
         	system("cls");
-        	
 	    	printf("DATACOCHES\n\n");
 	        printf("NUEVO CLIENTE\n\n");
 	    
-			printf("\nVEHÕCULO %i\n", i);
+			printf("\nVEH√çCULO %i\n", i);
 		    printf("Marca: ");
 		    scanf("%[^\n]s", mar);
 	   	    fflush(stdin);
 			printf("Modelo: ");
 		    scanf("%[^\n]s", mod);
 	   	    fflush(stdin);
-	   	    printf("MatrÌcula(0000AAA): ");
+	   	    printf("Matr√≠cula(0000AAA): ");
 		    scanf("%s", mat);
 	   	    fflush(stdin);
 	   	    do{
-	   	    	printf("KilÛmetros: ");
+	   	    	printf("Kil√≥metros: ");
 	   	    	scanf("%i", &kms);
 	   	    	fflush(stdin);
 	   	    	if(kms < 1 || kms > 1000000){
-	   	    		printf("\nIntroduzca de nuevo los kilÛmetros.\n\n");
+	   	    		printf("\nIntroduzca de nuevo los kil√≥metros.\n\n");
 				}
 			}
 	   	    while(kms < 1 || kms > 1000000);
-		    
-		    printf("\nLe confirmamos los datos de su vehÌculo: \n\nMARCA: %s \nMODELO: %s \nMATRÕCULA: %s\nKIL”METROS: %i\n", mar, mod, mat, kms);
+	   	    animacionBasica;
+        	system("cls");
+		    printf("\nLe confirmamos los datos de su veh√≠culo: \n\nMARCA: %s \nMODELO: %s \nMATR√çCULA: %s\nKIL√ìMETROS: %i\n", mar, mod, mat, kms);
 	    
 		    do{
-				printf("\nøEst· de acuerdo?(Si = s / No = n): ");
+				printf("\n¬øEst√° de acuerdo?(Si = s / No = n): ");
 		       	scanf("%c", &res);
 		       	fflush(stdin);
 			    if(res == 'n' || res == 'N'){
@@ -685,7 +706,7 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	
 	fprintf(clientes, "%s,%s,%c,%i/%i/%i,%s\n", nom, us, sexo, dia, mes, ano, cont);
 	
-	printf("\n°Cliente registrado con Èxito!\n\n");
+	printf("\n¬°Cliente registrado con √©xito!\n\n");
 	
 	system("pause");
 	
@@ -711,7 +732,7 @@ void CrearVehiculo(){
 	
 	do{
 		printf("DATACOCHES\n\n");
-	    printf("NUEVO VEHÕCULO\n\n");
+	    printf("NUEVO VEH√çCULO\n\n");
 	    
 	    printf("Nombre completo: ");
 	    scanf("%[^\n]s", nom);
@@ -722,20 +743,20 @@ void CrearVehiculo(){
     	printf("Modelo: ");
     	scanf("%[^\n]s", mod);
    	    fflush(stdin);
-   	    printf("MatrÌcula(0000AAA): ");
+   	    printf("Matr√≠cula(0000AAA): ");
     	scanf("%s", mat);
        	fflush(stdin);
        	do{
-       	   	printf("KilÛmetros: ");
+       	   	printf("Kil√≥metros: ");
        	   	scanf("%i", &kms);
    	       	fflush(stdin);
        	   	if(kms < 1 || kms > 1000000){
-           		printf("\nIntroduzca de nuevo los kilÛmetros.\n\n");
+           		printf("\nIntroduzca de nuevo los kil√≥metros.\n\n");
     		}
 	    }
    	    while(kms < 1 || kms > 1000000);
-   	    printf("\nLe confirmamos los datos del vehÌculo:\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATRÕCULA: %s \nKIL”METROS: %i\n\n", nom, mar, mod, mat, kms);
-   	    printf("\nøEst· de acuerdo?(Si = s / No = n): ");
+   	    printf("\nLe confirmamos los datos del veh√≠culo:\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATR√çCULA: %s \nKIL√ìMETROS: %i\n\n", nom, mar, mod, mat, kms);
+   	    printf("\n¬øEst√° de acuerdo?(Si = s / No = n): ");
        	scanf("%c", &res);
        	fflush(stdin);
        	do{
@@ -754,9 +775,11 @@ void CrearVehiculo(){
     }
    	while(res != 's' || res != 'S');
    	
+	animacionBasica;
+   	
    	fprintf(vehiculos,"%s,%s,%s,%s,%i\n", nom, mar, mod, mat, kms);
    	
-   	printf("\n°VehÌculo registrado con Èxito!\n\n");
+   	printf("\n¬°Veh√≠culo registrado con √©xito!\n\n");
    	
    	fclose(vehiculos);
    	
@@ -780,7 +803,7 @@ void ConsultarDatosVehiculo(){
 	while(!feof(vehiculos)){
 		fscanf(vehiculos, "%[^\n]s", basura);
 		adv = fgetc(vehiculos);
-		v++;//Contador para saber el n˙mero de vehÌculos
+		v++;//Contador para saber el n√∫mero de veh√≠culos
 	}
 	v--;
 	fseek(vehiculos, 0, SEEK_SET);//Para volver al inicio de un fichero
@@ -805,13 +828,14 @@ void ConsultarDatosVehiculo(){
 	do{
 		system("cls");
 		printf("DATACOCHES\n\n");
-    	printf("CONSULTA DE DATOS DEL VEHÕCULO\n\n");
+    	printf("CONSULTA DE DATOS DEL VEH√çCULO\n\n");
     	
     	i = 0;
 		aux = 0;
-		printf("Introduzca matrÌcula: ");
+		printf("Introduzca matr√≠cula: ");
 		scanf("%10s", mat);
 		fflush(stdin);
+		animacionBuscar;
 		while(i < v && aux == 0){
     		if(strcmp(mat, coche[i].matricula) == 0){
     			aux = 1;
@@ -820,16 +844,16 @@ void ConsultarDatosVehiculo(){
     	}
     	if(aux == 1){
     		i--;
-    		printf("\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATRÕCULA: %s \nKIL”METROS: %i\n\n", nombre[i], coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros);
+    		printf("\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATR√çCULA: %s \nKIL√ìMETROS: %i\n\n", nombre[i], coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros);
     		aux = 2;
 		}
 		else if(aux == 0){
-			printf("\nVehÌculo no registrado.\n\n");
+			printf("\nVeh√≠culo no registrado.\n\n");
 			Vaciar(mat);
 		}
 		
 		do{
-			printf("øQuÈ desea hacer?\n  1-    Consultar otro vehÌculo.\n  0-    Volver.\n   OPCI”N: ");
+			printf("¬øQu√© desea hacer?\n  1-    Consultar otro veh√≠culo.\n  0-    Volver.\n   OPCI√ìN: ");
 		    scanf("%i", &res);
 		    fflush(stdin);
 		    if(res != 0 && res != 1){
@@ -865,7 +889,7 @@ void ConsultarCita(char *user){
 	while(!feof(citas)){
 		fscanf(citas, "%[^\n]s", basura);
 		adv = fgetc(citas);
-		n++;//Contador para saber el n˙mero de citas
+		n++;//Contador para saber el n√∫mero de citas
     }
 	n--;
 	fseek(citas, 0, SEEK_SET);
@@ -890,6 +914,7 @@ void ConsultarCita(char *user){
 	
 	printf("DATACOCHES\n\n");
 	printf("CONSULTA DE CITAS\n\n");
+	animacionBuscar;
 	
 	for(i = 0; i < n && aux == 0; i++){
 		if(strcmp(user, cita[i].nombre) == 0){
@@ -899,12 +924,12 @@ void ConsultarCita(char *user){
 
 	if(aux == 1){
 		if(cita[i].min == 0){
-		    printf("Le mostramos los datos de su cita: \nNOMBRE: %s \nDÕA: %i/%i \nHORA: %i:%i%i\n", cita[i].nombre, cita[i].dia, cita[i].mes, cita[i].hora, cita[i].min, cita[i].min);
+		    printf("Le mostramos los datos de su cita: \nNOMBRE: %s \nD√çA: %i/%i \nHORA: %i:%i%i\n", cita[i].nombre, cita[i].dia, cita[i].mes, cita[i].hora, cita[i].min, cita[i].min);
         }
 	    else{
-	       	printf("Le mostramos los datos de su cita: \nNOMBRE: %s \nDÕA: %i/%i \nHORA: %i:%i\n", cita[i].nombre, cita[i].dia, cita[i].mes, cita[i].hora, cita[i].min);
+	       	printf("Le mostramos los datos de su cita: \nNOMBRE: %s \nD√çA: %i/%i \nHORA: %i:%i\n", cita[i].nombre, cita[i].dia, cita[i].mes, cita[i].hora, cita[i].min);
        	}
-       	printf("Por favor, no olvide traer la documentaciÛn de su vehÌculo.\n");
+       	printf("Por favor, no olvide traer la documentaci√≥n de su veh√≠culo.\n");
         printf("\nSi lo desea puede concertar otra cita(Si = s / No = n):");
 	}
 	else{
@@ -917,10 +942,10 @@ void ConsultarCita(char *user){
 			CrearCita(x, user);
 		}
 		else if(res != 's' && res != 'S' && res != 'n' && res != 'N'){
-			printf("\nTecla no reconocida.\n\nøQuiere concertar una cita?(Si = s / No = n):");
+			printf("\nTecla no reconocida.\n\n¬øQuiere concertar una cita?(Si = s / No = n):");
 		}
 		else{
-			printf("\nSi en alg˙n otro momento desea concertar una cita, puede hacerlo a travÈs del programa, o bien, llamando al 911 111 111\n\n");
+			printf("\nSi en alg√∫n otro momento desea concertar una cita, puede hacerlo a trav√©s del programa, o bien, llamando al 911 111 111\n\n");
 		}
 	}
 	while(res != 's' && res != 'S' && res != 'n' && res != 'N');
@@ -932,7 +957,7 @@ void Calendario(){
 	system("chcp 1252");
 	system("cls");
 	
-	int mes, dias[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};//DÌas que tiene cada mes
+	int mes, dias[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};//D√≠as que tiene cada mes
 	
 	printf("DATACOCHES\n\n");
 	printf("CALENDARIO\n\n");
@@ -993,7 +1018,7 @@ void Calendario(){
 
 void Mes(int mes, int d){//Para representar los meses en el calendario
 	int dia, i, j, k, n = 0, aux;
-	char basura[M], adv;//Usamos basura y adv para recorrer el fichero de forma r·pida y contar las filas que tiene
+	char basura[M], adv;//Usamos basura y adv para recorrer el fichero de forma r√°pida y contar las filas que tiene
 	Cita cita[M], citaux;
 	FILE *citas;
 	
@@ -1005,7 +1030,7 @@ void Mes(int mes, int d){//Para representar los meses en el calendario
 	while(!feof(citas)){
 		fscanf(citas, "%[^\n]s", basura);
 		adv = fgetc(citas);
-		n++;//Contador para saber el n˙mero de citas
+		n++;//Contador para saber el n√∫mero de citas
     }
 	n--;
 	fseek(citas, 0, SEEK_SET);
@@ -1028,7 +1053,7 @@ void Mes(int mes, int d){//Para representar los meses en el calendario
 	}
 	fclose(citas);
 	
-	for(i = 0; i < n; i++){//Bucle para ordenar las citas seg˙n la fecha y la hora
+	for(i = 0; i < n; i++){//Bucle para ordenar las citas seg√∫n la fecha y la hora
 		while(cita[i+1].mes < cita[i].mes){
 			citaux = cita[i+1];
 			cita[i+1] = cita[i];
@@ -1081,4 +1106,46 @@ void Vaciar(char cadena[]){
 	int i;
 	for(i = 0; i < N; i++)
     	cadena[i] = '\0';
+}
+void animacionguardar() {
+	system("cls");
+	printf("\n");
+	Sleep(500);
+	system("cls");
+	printf("Guardando cambios .\n");
+	Sleep(500);
+	system("cls");
+	printf("Guardando cambios . .\n");
+	Sleep(500);
+	system("cls");
+	printf("Guardando cambios . . .\n");
+	Sleep(500);
+}
+void animacionBasica(){
+	system("cls");
+	print("Guardando\n");
+	sleep(500);
+	system("cls");
+	print("Guardando .\n");
+	sleep(500);
+	system("cls");
+	print("Guardando . .\n");
+	sleep(500);
+	system("cls");
+	print("Guardando . . .\n");
+	sleep(500);
+}
+void animacionBuscar(){
+	system("cls");
+	print("Bucando datos\n");
+	sleep(500);
+	system("cls");
+	print("Buscando datos .\n");
+	sleep(500);
+	system("cls");
+	print("Buscando datos . .\n");
+	sleep(500);
+	system("cls");
+	print("Buscando datos . . .\n");
+	sleep(500);
 }
