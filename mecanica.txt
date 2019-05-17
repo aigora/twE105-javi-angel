@@ -4,3 +4,4 @@
 4,Paralelo,0.6,0
 5,Revisión completa(aceite y todos los filtros),1,70
 6,Cambio de bujías,0.3,25
+7,Regular luces delanteras,0.3,0

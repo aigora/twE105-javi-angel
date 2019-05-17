@@ -4,3 +4,4 @@
 4,Cambiar luna delantera,1.2,215
 5,Cambiar elevaluna eléctrico,1.5,120
 6,Montar kit 'camping',3.2,470
+7,Instalar equipo multimedia,3.2,260

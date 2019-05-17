@@ -1,8 +1,10 @@
-Laura GÃ³mez Serranillo,Opel,Astra H,1378FTS,128659
-Jorge MartÃ­nez Bris,Fiat,Punto,7337BDS,300001
-Jorge MartÃ­nez Bris,Mercedes,CLA45 AMG,2345KVM,1843
-Javier FernÃ¡ndez Ochoa,Renault,Megane,2345DSR,639291
+Laura Gómez Serranillo,Opel,Astra H,1378FTS,128659
+Jorge Martínez Bris,Fiat,Punto,7337BDS,300001
+Jorge Martínez Bris,Mercedes,CLA45 AMG,2345KVM,1843
+Javier Fernández Ochoa,Renault,Megane,2345DSR,639291
 Luis Prieto Lobato,Citroen,C4 Picasso,9534BCD,342698
 Luis Prieto Lobato,Peugeot,308,7345JPS,54607
-Jorge MartÃ­nez Bris,Alfa Romeo,Stelvio,7451KDR,47239
-Javier FernÃ¡ndez Ochoa,Nissan,Navara,0023CRZ,267893
+Jorge Martínez Bris,Alfa Romeo,Stelvio,7451KDR,47239
+Javier Fernández Ochoa,Subaru,Impreza,0023CRX,143976
+Luis Andrés del Manzano Luque,Mitsubushi,Lancer Evolution,8888KKK,27401
+Juan Jiménez de la Flor,Jaguar,F-type,9274KTS,7081

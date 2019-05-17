@@ -8,3 +8,4 @@
 8,Pintar puerta,1.5,90
 9,Pintar tapa retrovisor,0.3,10
 10,Pulido completo,1,60
+11,Pintar portón trasero,1.3,85
