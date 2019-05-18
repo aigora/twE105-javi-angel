@@ -1751,11 +1751,11 @@ void ConsultarEstado(int x, char *user){
 							printf("\nMATRÍCULA: %s \n\n", coche[i].matricula);
 				    		for(k = 0; k < coche[i].numordenes; k++){
 				    			if(coche[i].rep[k].area == 1){
-				    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, mec[coche[i].rep[k].orden].reparacion, mec[coche[i].rep[k].orden].horas);
-				    				if(mec[coche[i].rep[k].orden].materiales != 0){
+				    				printf("ORDEN %i: %s.\n\tHoras: %g", k, mec[coche[i].rep[k].orden - 1].reparacion, mec[coche[i].rep[k].orden - 1].horas);
+				    				if(mec[coche[i].rep[k].orden - 1].materiales != 0){
 				    					printf("\tMateriales: %g€", mec[coche[i].rep[k].orden].materiales);
 									}
-									printf("\tPrecio total: %g€\n", mec[coche[i].rep[k].orden].total);
+									printf("\tPrecio total: %g€\n", mec[coche[i].rep[k].orden - 1].total);
 									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
@@ -1765,14 +1765,14 @@ void ConsultarEstado(int x, char *user){
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
-									sumatotal += mec[coche[i].rep[k].orden].total;
+									sumatotal += mec[coche[i].rep[k].orden - 1].total;
 								}
 				    			else if(coche[i].rep[k].area == 2){
-				    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, carr[coche[i].rep[k].orden].reparacion, carr[coche[i].rep[k].orden].horas);
-				    				if(carr[coche[i].rep[k].orden].materiales != 0){
-				    					printf("\tMateriales: %g€", carr[coche[i].rep[k].orden].materiales);
+				    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, carr[coche[i].rep[k].orden - 1].reparacion, carr[coche[i].rep[k].orden - 1].horas);
+				    				if(carr[coche[i].rep[k].orden - 1].materiales != 0){
+				    					printf("\tMateriales: %g€", carr[coche[i].rep[k].orden - 1].materiales);
 									}
-									printf("\tPrecio total: %g€\n", carr[coche[i].rep[k].orden].total);
+									printf("\tPrecio total: %g€\n", carr[coche[i].rep[k].orden - 1].total);
 									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
@@ -1782,14 +1782,14 @@ void ConsultarEstado(int x, char *user){
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
-									sumatotal += carr[coche[i].rep[k].orden].total;
+									sumatotal += carr[coche[i].rep[k].orden - 1].total;
 								}
 								else{
-									printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, pint[coche[i].rep[k].orden].reparacion, pint[coche[i].rep[k].orden].horas);
-				    				if(pint[coche[i].rep[k].orden].materiales != 0){
-				    					printf("\tMateriales: %g€", pint[coche[i].rep[k].orden].materiales);
+									printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, pint[coche[i].rep[k].orden - 1].reparacion, pint[coche[i].rep[k].orden - 1].horas);
+				    				if(pint[coche[i].rep[k].orden - 1].materiales != 0){
+				    					printf("\tMateriales: %g€", pint[coche[i].rep[k].orden - 1].materiales);
 									}
-									printf("\tPrecio total: %g€\n", pint[coche[i].rep[k].orden].total);
+									printf("\tPrecio total: %g€\n", pint[coche[i].rep[k].orden - 1].total);
 									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
@@ -1799,7 +1799,7 @@ void ConsultarEstado(int x, char *user){
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
-									sumatotal += pint[coche[i].rep[k].orden].total;
+									sumatotal += pint[coche[i].rep[k].orden - 1].total;
 								}
 							}
 							printf("\nPRESUPUESTO: %g€\n\n", sumatotal);
@@ -1948,13 +1948,14 @@ void ConsultarEstado(int x, char *user){
 										fprintf(newvehiculos, "\n");
 									}
 									Vaciar(mat);
-									printf("¡Orden añadida con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									printf("¡Orden añadida con éxito!\n\n");
 									fclose(newvehiculos);
-									res = 1;
+									res = 0;
 									system("pause");
 				    				break;
 				    			
 				    			case 0:
+				    				res = 0;
 				    				break;
 				    			case 2:
 				    				op++;
@@ -2074,9 +2075,9 @@ void ConsultarEstado(int x, char *user){
 										fprintf(newvehiculos, "\n");
 									}
 									Vaciar(mat);
-									printf("¡Orden añadida con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									printf("¡Orden añadida con éxito!\n\n");
 									fclose(newvehiculos);
-									res = 1;
+									res = 0;
 									system("pause");
 				    				break;
 				    				
@@ -2130,13 +2131,14 @@ void ConsultarEstado(int x, char *user){
 										fprintf(newvehiculos, "\n");
 									}
 									Vaciar(mat);
-									printf("¡Estado modificado con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									printf("¡Estado modificado con éxito!\n\n");
 									fclose(newvehiculos);
-									res = 1;
+									res = 0;
 									system("pause");
 				    				break;
 				    				
 				    			case 0:
+				    				res = 0;
 				    				break;
 				    				
 				    			default:
