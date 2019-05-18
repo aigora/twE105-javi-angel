@@ -1,10 +1,10 @@
-Laura Gómez Serranillo,Opel,Astra H,1378FTS,128659/3;0,6,2;1,4,1;2,10,0
-Jorge Martínez Bris,Fiat,Punto,7337BDS,300001/1;0,5,1
-Jorge Martínez Bris,Mercedes,CLA45 AMG,2345KVM,1843/2;1,1,0;2,1,0
+Laura Gómez Serranillo,Opel,Astra H,1378FTS,128659/3;1,6,3;2,4,2;3,10,1
+Jorge Martínez Bris,Fiat,Punto,7337BDS,300001/3;1,5,3;3,7,1;3,8,1
+Jorge Martínez Bris,Mercedes,CLA45 AMG,2345KVM,1843/4;2,1,1;3,1,1;651120,0,0;1,2,1
 Javier Fernández Ochoa,Renault,Megane,2345DSR,639291/0
 Luis Prieto Lobato,Citroen,C4 Picasso,9534BCD,342698/0
 Luis Prieto Lobato,Peugeot,308,7345JPS,54607/0
-Jorge Martínez Bris,Alfa Romeo,Stelvio,7451KDR,47239/4;0,1,2;1,3,2;1,6,1;2,7,0
-Javier Fernández Ochoa,Subaru,Impreza,0023CRX,143976/0
-Luis Andrés del Manzano Luque,Mitsubushi,Lancer Evolution,8888KKK,27401/0
-Juan Jiménez de la Flor,Jaguar,F-type,9274KTS,7081/1;2,10,1
+Jorge Martínez Bris,Alfa Romeo,Stelvio,7451KDR,47239/4;1,1,3;2,3,3;2,6,2;3,7,1
+Javier Fernández Ochoa,Subaru,Impreza,0023CRX,143976/1;1,7,2
+Luis Andrés Manzano Luque,Mitsubushi,Lancer Evolution,8888KKK,27401/0
+Juan Jiménez de la Flor,Jaguar,F-type,9274KTS,7081/1;3,10,2

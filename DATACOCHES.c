@@ -22,9 +22,9 @@ typedef struct{
 }Cita;
 
 typedef struct{
-	int area;//0 = Mecánica, 1 = Carrocería, 2 = Pintura
+	int area;//1 = Mecánica, 2 = Carrocería, 3 = Pintura
 	int orden;
-	int estado;//0 = En espera, 1 = En proceso, 2 = Terminado
+	int estado;//1 = En espera, 2 = En proceso, 3 = Terminado
 }Estado;
 
 typedef struct{
@@ -177,8 +177,8 @@ void MenuEmpleado(char *user){
     	printf("¿Qué desea hacer?\n\n");
     	
 	    printf("  1-    Consultar datos sobre un vehículo.\n  2-    Consultar estado de un vehículo.\n  " 
-		"3-    Modificar estado de un vehículo.\n  4-    Añadir orden de reparación.\n  5-    Crear nuevo empleado.\n  6-    Crear nuevo cliente.\n"
-		"  7-    Crear nuevo vehículo.\n  8-    Generar nueva cita.\n  9-    Consultar calendario.\n  0-    Cerrar sesión.\n\n   OPCIÓN: ");
+		"3-    Añadir orden de reparación.\n  4-    Crear nuevo empleado.\n  5-    Crear nuevo cliente.\n"
+		"  6-    Crear nuevo vehículo.\n  7-    Generar nueva cita.\n  8-    Consultar calendario.\n  9-    Consultar listado de precios.\n  0-    Cerrar sesión.\n\n   OPCIÓN: ");
 	    scanf("%c", &opcion);
 	    fflush(stdin);
 	    printf("\n");
@@ -189,27 +189,27 @@ void MenuEmpleado(char *user){
 	    		break;
 	    	case '2':
 	    		ConsultarEstado(x, user);
-		    	break;
-	    	case '3':
-		    	printf("MODIFICAR ESTADO\n");
 			    break;
-	    	case '4':
+	    	case '3':
 		    	AnadirOrden();
 			    break;
-    		case '5':
+    		case '4':
 	    		CrearEmpleado();
 		    	break;
-		    case '6':
+		    case '5':
 	    		CrearCliente();
 		    	break;
-		    case '7':
+		    case '6':
 		    	CrearVehiculo();
 		    	break;
-		    case '8':
+		    case '7':
 		    	CrearCita(x, user);
 		    	break;
-		    case '9':
+		    case '8':
 		    	Calendario();
+		    	break;
+		    case '9':
+		    	ListadoPrecios();
 		    	break;
 		    case '0':
 		    	animacionCerrarSesion();
@@ -235,7 +235,7 @@ void MenuCliente(char *user){
     	printf("¿Qué desea hacer?\n\n");
 		
 	    printf("  1-    Consultar estado de un vehículo.\n  2-    Consultar citas.\n"
-		"  3-    Generar nueva cita.\n  4-    Listado de precios.\n  0-    Cerrar sesión.\n\n   OPCIÓN: ");
+		"  3-    Generar nueva cita.\n  4-    Consultar listado de precios.\n  0-    Cerrar sesión.\n\n   OPCIÓN: ");
 	    scanf("%c", &opcion);
 	    fflush(stdin);
 	    switch(opcion)
@@ -919,7 +919,7 @@ void DatosVehiculo(){
 			    	do{
 			    		system("cls");
 			    		printf("DATACOCHES\n\n");
-				    	printf("¿Qué datos desea modificar?\n\n   1-    Marca\n   2-    Modelo\n   3-    Matrícula\n   4-    Kilometros\n\n   OPCIÓN: ");
+				    	printf("¿Qué datos desea modificar?\n\n   1-    Marca\n   2-    Modelo\n   3-    Matrícula\n   4-    Kilometros\n   0-    Volver\n\n   OPCIÓN: ");
 			    		scanf("%i", &op);
 			    		fflush(stdin);
 			    		switch(op)
@@ -945,43 +945,48 @@ void DatosVehiculo(){
 			    				scanf("%i", &coche[i].kilometros);
 			    				fflush(stdin);
 			    				break;
+			    			case 0:
+			    				res2 = 's';
+			    				break;
 			    			default:
 			    				printf("\nTecla no reconocida\n\n");
 			    				system("pause");
 			    				break;	
 						}
 				    }
-				    while(op != 1 && op != 2 && op != 3 && op != 4);
+				    while(op != 1 && op != 2 && op != 3 && op != 4 && op != 0);
 				    
-					printf("\nEstos son los nuevos datos:\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATRÍCULA: %s \nKILÓMETROS: %i\n\n", coche[i].nombre, coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros);
-	    			
-					do{
-						printf("¿Está conforme con los datos?(Si = s / No = n): ");
-						scanf("%c", &res2);
-						fflush(stdin);
-						if(res2 == 's' || res2 == 'S'){
-							newvehiculos = fopen("vehiculos.txt", "w");
-							if (newvehiculos == NULL){ 
-							printf("Error al abrir el fichero.\n"); 
-							exit(1); 
-							}
-							for(j = 0; j < v; j++){
-								fprintf(newvehiculos, "%s,%s,%s,%s,%i/%i", coche[i].nombre, coche[j].marca, coche[j].modelo, coche[j].matricula, coche[j].kilometros, coche[i].numordenes);
-								for(k = 0; k < coche[i].numordenes; k++){
-									fprintf(newvehiculos, ";%i,%i,%i", coche[j].rep[k].area, coche[j].rep[k].orden, coche[j].rep[k].estado);
+				    if(res2 == 'n'){
+						printf("\nEstos son los nuevos datos:\nPROPIETARIO: %s \nMARCA: %s \nMODELO: %s \nMATRÍCULA: %s \nKILÓMETROS: %i\n\n", coche[i].nombre, coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros);
+		    			
+						do{
+							printf("¿Está conforme con los datos?(Si = s / No = n): ");
+							scanf("%c", &res2);
+							fflush(stdin);
+							if(res2 == 's' || res2 == 'S'){
+								newvehiculos = fopen("vehiculos.txt", "w");
+								if (newvehiculos == NULL){ 
+								printf("Error al abrir el fichero.\n"); 
+								exit(1); 
 								}
-								fprintf(newvehiculos, "\n");
+								for(j = 0; j < v; j++){
+									fprintf(newvehiculos, "%s,%s,%s,%s,%i/%i", coche[i].nombre, coche[j].marca, coche[j].modelo, coche[j].matricula, coche[j].kilometros, coche[i].numordenes);
+									for(k = 0; k < coche[i].numordenes; k++){
+										fprintf(newvehiculos, ";%i,%i,%i", coche[j].rep[k].area, coche[j].rep[k].orden, coche[j].rep[k].estado);
+									}
+									fprintf(newvehiculos, "\n");
+								}
+								animacionGuardarCambios();
+								printf("\n¡Datos modificados correctamente!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+								system("pause");
+								fclose(newvehiculos);
 							}
-							animacionGuardarCambios();
-							printf("\n¡Datos modificados correctamente!\n\n");
-							system("pause");
-							fclose(newvehiculos);
+							else if(res2 != 's' && res2 != 'S' && res2 != 'n' && res2 != 'N'){
+								printf("\nTecla no reconocida.\n\n");
+							}
 						}
-						else if(res2 != 's' && res2 != 'S' && res2 != 'n' && res2 != 'N'){
-							printf("\nTecla no reconocida.\n\n");
-						}
+						while(res2 != 's' && res2 != 'S' && res2 != 'n' && res2 != 'N');
 					}
-					while(res2 != 's' && res2 != 'S' && res2 != 'n' && res2 != 'N');
 				}
 				while(res2 == 'n' || res2 == 'N');
 			}
@@ -1598,11 +1603,12 @@ void Mes(int mes, int d){//Para representar los meses en el calendario
 void ConsultarEstado(int x, char *user){
 	system("chcp 1252");
 	
-	int i, j, k, n, aux, res, m, c, p, op, v;
-	char mat[10], adv;
+	int i, j, k, h, n, aux, res, m, c, p, op, v, area, orden, estado;
+	float sumatotal = 0;
+	char mat[10], adv, res2;
 	Vehiculo coche[N], cocheaux[5];
 	Reparacion mec[N], carr[N], pint[N];
-	FILE *vehiculos, *mecanica, *carroceria, *pintura;
+	FILE *vehiculos, *newvehiculos, *mecanica, *carroceria, *pintura;
 	
 	vehiculos = fopen("vehiculos.txt", "r");
 	if (vehiculos == NULL){ 
@@ -1744,37 +1750,39 @@ void ConsultarEstado(int x, char *user){
 						else{
 							printf("\nMATRÍCULA: %s \n\n", coche[i].matricula);
 				    		for(k = 0; k < coche[i].numordenes; k++){
-				    			if(coche[i].rep[k].area == 0){
+				    			if(coche[i].rep[k].area == 1){
 				    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, mec[coche[i].rep[k].orden].reparacion, mec[coche[i].rep[k].orden].horas);
 				    				if(mec[coche[i].rep[k].orden].materiales != 0){
 				    					printf("\tMateriales: %g€", mec[coche[i].rep[k].orden].materiales);
 									}
 									printf("\tPrecio total: %g€\n", mec[coche[i].rep[k].orden].total);
-									if(coche[i].rep[k].estado == 0){
+									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
-									else if(coche[i].rep[k].estado == 1){
+									else if(coche[i].rep[k].estado == 2){
 										printf("\tESTADO: En proceso.\n\n");
 									}
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
+									sumatotal += mec[coche[i].rep[k].orden].total;
 								}
-				    			else if(coche[i].rep[k].area == 1){
+				    			else if(coche[i].rep[k].area == 2){
 				    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, carr[coche[i].rep[k].orden].reparacion, carr[coche[i].rep[k].orden].horas);
 				    				if(carr[coche[i].rep[k].orden].materiales != 0){
 				    					printf("\tMateriales: %g€", carr[coche[i].rep[k].orden].materiales);
 									}
 									printf("\tPrecio total: %g€\n", carr[coche[i].rep[k].orden].total);
-									if(coche[i].rep[k].estado == 0){
+									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
-									else if(coche[i].rep[k].estado == 1){
+									else if(coche[i].rep[k].estado == 2){
 										printf("\tESTADO: En proceso.\n\n");
 									}
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
+									sumatotal += carr[coche[i].rep[k].orden].total;
 								}
 								else{
 									printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, pint[coche[i].rep[k].orden].reparacion, pint[coche[i].rep[k].orden].horas);
@@ -1782,17 +1790,19 @@ void ConsultarEstado(int x, char *user){
 				    					printf("\tMateriales: %g€", pint[coche[i].rep[k].orden].materiales);
 									}
 									printf("\tPrecio total: %g€\n", pint[coche[i].rep[k].orden].total);
-									if(coche[i].rep[k].estado == 0){
+									if(coche[i].rep[k].estado == 1){
 										printf("\tESTADO: En espera.\n\n");
 									}
-									else if(coche[i].rep[k].estado == 1){
+									else if(coche[i].rep[k].estado == 2){
 										printf("\tESTADO: En proceso.\n\n");
 									}
 									else{
 										printf("\tESTADO: Terminado.\n\n");
 									}
+									sumatotal += pint[coche[i].rep[k].orden].total;
 								}
 							}
+							printf("\nPRESUPUESTO: %g€\n\n", sumatotal);
 						}
 			    		aux = 2;
 			    		system("pause");
@@ -1810,15 +1820,333 @@ void ConsultarEstado(int x, char *user){
 				system("cls");
 				printf("DATACOCHES\n\n");
 		    	printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
-				printf("¿Qué desea hacer?\n\n  1-    Consultar otro vehículo.\n  0-    Volver.\n\n   OPCIÓN: ");
+				printf("¿Qué desea hacer?\n\n  1-    Consultar otro vehículo.\n  2-    Modificar estado del vehículo.\n  0-    Volver.\n\n   OPCIÓN: ");
 			    scanf("%i", &res);
 			    fflush(stdin);
-			    if(res != 0 && res != 1){
+			    if(res != 0 && res != 1 && res != 2){
 			        printf("\nTecla no reconocida.\n\n");
 			        system("pause");
 			    }
 			    else if(res == 1){
 			    	Vaciar(mat);
+			    	sumatotal = 0;
+				}
+				else if(res == 0){
+					//NADA
+				}
+				else{
+			    	do{
+			    		system("cls");
+			    		printf("DATACOCHES\n\n");
+			    		printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+			    		if(coche[i].numordenes == 0){
+			    			printf("¿Qué desea hacer?\n\n   1-    Añadir nueva orden\n   0-    Volver\n\n   OPCIÓN: ");
+				    		scanf("%i", &op);
+				    		fflush(stdin);
+				    		switch(op)
+							{
+				    			case 1:
+				    				newvehiculos = fopen("vehiculos.txt", "w");
+									if (newvehiculos == NULL){ 
+									printf("Error al abrir el fichero.\n"); 
+									exit(1); 
+									}
+				    				do{
+				    					system("cls");
+				    					printf("DATACOCHES\n\n");
+				    					printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    					printf("Seleccione el área: \n\n   1-    MECÁNICA\n   2-    CARROCERÍA\n   3-    PINTURA\n\n   OPCIÓN: ");
+				   		 				scanf("%i", &area);
+				    					fflush(stdin);
+				    					if(area != 1 && area != 2 && area != 3){
+				    						printf("\nTecla no reconocida.\n\n");
+					    					system("pause");
+										}
+				    				}
+				    				while(area != 1 && area != 2 && area != 3);
+				    				if(area == 1){
+				    					do{
+				    						system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES MECANICA\n");
+				    						for(h = 0; h < m; h++){
+				    							printf("  %i-   %s\n", h + 1, mec[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > m){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > m);
+									}
+									else if(area == 2){
+										do{
+											system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES CARROCERÍA\n");
+				    						for(h = 0; h < c; h++){
+				    							printf("  %i-   %s\n", h + 1, carr[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > c){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > c);
+									}
+									else{
+										do{
+											system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES PINTURA\n");
+				    						for(h = 0; h < p; h++){
+				    							printf("  %i-   %s\n", h + 1, pint[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > p){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > p);
+									}
+									do{
+										system("cls");
+				    					printf("DATACOCHES\n\n");
+				    					printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+										printf("Seleccione el estado: \n\n   1-    En espera.\n   2-    En proceso.\n   3-    Terminado.\n\n   OPCIÓN: ");
+										scanf("%i", &estado);
+										fflush(stdin);
+										if(estado != 1 && estado != 2 && estado != 3){
+											printf("\nTecla no reconocida.\n\n");
+					    					system("pause");
+										}
+									}
+									while(estado != 1 && estado != 2 && estado != 3);
+									
+									coche[i].numordenes = k + 1;
+									coche[i].rep[k].area = area;
+									coche[i].rep[k].orden = orden;
+									coche[i].rep[k].estado = estado;
+									animacionGuardar();
+									for(i = 0; i < v; i++){
+										fprintf(newvehiculos, "%s,%s,%s,%s,%i/%i", coche[i].nombre, coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros, coche[i].numordenes);
+										for(j = 0; j < coche[i].numordenes; j++){
+											fprintf(newvehiculos, ";%i,%i,%i", coche[i].rep[j].area, coche[i].rep[j].orden, coche[i].rep[j].estado);
+										}
+										fprintf(newvehiculos, "\n");
+									}
+									Vaciar(mat);
+									printf("¡Orden añadida con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									fclose(newvehiculos);
+									res = 1;
+									system("pause");
+				    				break;
+				    			
+				    			case 0:
+				    				break;
+				    			case 2:
+				    				op++;
+				    				break;
+				    			default:
+				    				printf("\nTecla no reconocida\n\n");
+				    				system("pause");
+				    				break;	
+							}
+						}
+						else{
+					    	printf("¿Qué desea hacer?\n\n   1-    Añadir nueva orden\n   2-    Modificar estado orden\n   0-    Volver\n\n   OPCIÓN: ");
+				    		scanf("%i", &op);
+				    		fflush(stdin);
+				    		switch(op)
+							{
+				    			case 1:
+				    				newvehiculos = fopen("vehiculos.txt", "w");
+									if (newvehiculos == NULL){ 
+									printf("Error al abrir el fichero.\n"); 
+									exit(1); 
+									}
+				    				do{
+				    					system("cls");
+				    					printf("DATACOCHES\n\n");
+				    					printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    					printf("Seleccione el área: \n\n   1-    MECÁNICA\n   2-    CARROCERÍA\n   3-    PINTURA\n\n   OPCIÓN: ");
+				   		 				scanf("%i", &area);
+				    					fflush(stdin);
+				    					if(area != 1 && area != 2 && area != 3){
+				    						printf("\nTecla no reconocida.\n\n");
+					    					system("pause");
+										}
+				    				}
+				    				while(area != 1 && area != 2 && area != 3);
+				    				if(area == 1){
+				    					do{
+				    						system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES MECANICA\n");
+				    						for(h = 0; h < m; h++){
+				    							printf("  %i-   %s\n", h + 1, mec[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > m){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > m);
+									}
+									else if(area == 2){
+										do{
+											system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES CARROCERÍA\n");
+				    						for(h = 0; h < c; h++){
+				    							printf("  %i-   %s\n", h + 1, carr[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > c){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > c);
+									}
+									else{
+										do{
+											system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+				    						printf("ÓRDENES PINTURA\n");
+				    						for(h = 0; h < p; h++){
+				    							printf("  %i-   %s\n", h + 1, pint[h].reparacion);
+											}
+					    					printf("\nIndique el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if(orden < 1 || orden > p){
+					    						printf("\nTecla no reconocida.\n\n");
+					    						system("pause");
+											}
+					    				}
+					    				while(orden < 1 || orden > p);
+									}
+									do{
+										system("cls");
+				    					printf("DATACOCHES\n\n");
+				    					printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+										printf("Seleccione el estado: \n\n   1-    En espera.\n   2-    En proceso.\n   3-    Terminado.\n\n   OPCIÓN: ");
+										scanf("%i", &estado);
+										fflush(stdin);
+										if(estado != 1 && estado != 2 && estado != 3){
+											printf("\nTecla no reconocida.\n\n");
+					    					system("pause");
+										}
+									}
+									while(estado != 1 && estado != 2 && estado != 3);
+									
+									coche[i].numordenes = k + 1;
+									coche[i].rep[k].area = area;
+									coche[i].rep[k].orden = orden;
+									coche[i].rep[k].estado = estado;
+									animacionGuardar();
+									for(i = 0; i < v; i++){
+										fprintf(newvehiculos, "%s,%s,%s,%s,%i/%i", coche[i].nombre, coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros, coche[i].numordenes);
+										for(j = 0; j < coche[i].numordenes; j++){
+											fprintf(newvehiculos, ";%i,%i,%i", coche[i].rep[j].area, coche[i].rep[j].orden, coche[i].rep[j].estado);
+										}
+										fprintf(newvehiculos, "\n");
+									}
+									Vaciar(mat);
+									printf("¡Orden añadida con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									fclose(newvehiculos);
+									res = 1;
+									system("pause");
+				    				break;
+				    				
+				    			case 2:
+				    				newvehiculos = fopen("vehiculos.txt", "w");
+									if (newvehiculos == NULL){ 
+									printf("Error al abrir el fichero.\n"); 
+									exit(1); 
+									}
+									
+				    				if(coche[i].numordenes > 1){
+				    					do{
+				    						system("cls");
+				    						printf("DATACOCHES\n\n");
+				    						printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+					    					printf("Seleccione el número de orden: ");
+					    					scanf("%i", &orden);
+					    					fflush(stdin);
+					    					if((orden != 1 && orden != 2 && orden != 3 && orden != 4 && orden != 5) || (orden > coche[i].numordenes)){
+					    						printf("\nTecla no reconocida.\n\n");
+											}
+					    				}
+					    				while((orden != 1 && orden != 2 && orden != 3 && orden != 4 && orden != 5) || (orden > coche[i].numordenes));
+					    				orden--;
+					    				
+									}
+									else{
+										orden = 0;
+									}
+									do{
+										system("cls");
+				    					printf("DATACOCHES\n\n");
+				    					printf("CONSULTAR ESTADO DE VEHÍCULO\n\n");
+										printf("Seleccione el estado: \n\n   1-    En espera.\n   2-    En proceso.\n   3-    Terminado.\n\n   OPCIÓN: ");
+										scanf("%i", &estado);
+										fflush(stdin);
+										if(estado != 1 && estado != 2 && estado != 3){
+											printf("\nTecla no reconocida.\n\n");
+					    					system("pause");
+										}
+									}
+									while(estado != 1 && estado != 2 && estado != 3);
+									
+									coche[i].rep[orden].estado = estado;
+									animacionGuardarCambios();
+									for(i = 0; i < v; i++){
+										fprintf(newvehiculos, "%s,%s,%s,%s,%i/%i", coche[i].nombre, coche[i].marca, coche[i].modelo, coche[i].matricula, coche[i].kilometros, coche[i].numordenes);
+										for(j = 0; j < coche[i].numordenes; j++){
+											fprintf(newvehiculos, ";%i,%i,%i", coche[i].rep[j].area, coche[i].rep[j].orden, coche[i].rep[j].estado);
+										}
+										fprintf(newvehiculos, "\n");
+									}
+									Vaciar(mat);
+									printf("¡Estado modificado con éxito!\n\nPara poder visualizar los cambios debe volver al menú principal.\n\n");
+									fclose(newvehiculos);
+									res = 1;
+									system("pause");
+				    				break;
+				    				
+				    			case 0:
+				    				break;
+				    				
+				    			default:
+				    				printf("\nTecla no reconocida\n\n");
+				    				system("pause");
+				    				break;	
+							}
+						}
+				    }
+				    while(op != 1 && op != 2 && op != 0);
 				}
 			}
 			while(res != 0 && res != 1);
@@ -1877,37 +2205,39 @@ void ConsultarEstado(int x, char *user){
 			else{
 				printf("\nMATRÍCULA: %s \n\n", cocheaux[op-1].matricula);
 	    		for(k = 0; k < cocheaux[op-1].numordenes; k++){
-	    			if(cocheaux[op-1].rep[k].area == 0){
+	    			if(cocheaux[op-1].rep[k].area == 1){
 	    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, mec[cocheaux[op-1].rep[k].orden].reparacion, mec[cocheaux[op-1].rep[k].orden].horas);
 	    				if(mec[cocheaux[op-1].rep[k].orden].materiales != 0){
 	    					printf("\tMateriales: %g€", mec[cocheaux[op-1].rep[k].orden].materiales);
 						}
 						printf("\tPrecio total: %g€\n", mec[cocheaux[op-1].rep[k].orden].total);
-						if(cocheaux[op-1].rep[k].estado == 0){
+						if(cocheaux[op-1].rep[k].estado == 1){
 							printf("\tESTADO: En espera.\n\n");
 						}
-						else if(cocheaux[op-1].rep[k].estado == 1){
+						else if(cocheaux[op-1].rep[k].estado == 2){
 							printf("\tESTADO: En proceso.\n\n");
 						}
 						else{
 							printf("\tESTADO: Terminado.\n\n");
 						}
+						sumatotal += mec[cocheaux[op-1].rep[k].orden].total;
 					}
-	    			else if(cocheaux[op-1].rep[k].area == 1){
+	    			else if(cocheaux[op-1].rep[k].area == 2){
 	    				printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, carr[cocheaux[op-1].rep[k].orden].reparacion, carr[cocheaux[op-1].rep[k].orden].horas);
 	    				if(carr[cocheaux[op-1].rep[k].orden].materiales != 0){
 	    					printf("\tMateriales: %g€", carr[cocheaux[op-1].rep[k].orden].materiales);
 						}
 						printf("\tPrecio total: %g€\n", carr[cocheaux[op-1].rep[k].orden].total);
-						if(cocheaux[op-1].rep[k].estado == 0){
+						if(cocheaux[op-1].rep[k].estado == 1){
 							printf("\tESTADO: En espera.\n\n");
 						}
-						else if(cocheaux[op-1].rep[k].estado == 1){
+						else if(cocheaux[op-1].rep[k].estado == 2){
 							printf("\tESTADO: En proceso.\n\n");
 						}
 						else{
 							printf("\tESTADO: Terminado.\n\n");
 						}
+						sumatotal += carr[cocheaux[op-1].rep[k].orden].total;
 					}
 					else{
 						printf("ORDEN %i: %s.\n\tHoras: %g", k + 1, pint[cocheaux[op-1].rep[k].orden].reparacion, pint[cocheaux[op-1].rep[k].orden].horas);
@@ -1915,17 +2245,19 @@ void ConsultarEstado(int x, char *user){
 	    					printf("\tMateriales: %g€", pint[cocheaux[op-1].rep[k].orden].materiales);
 						}
 						printf("\tPrecio total: %g€\n", pint[cocheaux[op-1].rep[k].orden].total);
-						if(cocheaux[op-1].rep[k].estado == 0){
+						if(cocheaux[op-1].rep[k].estado == 1){
 							printf("\tESTADO: En espera.\n\n");
 						}
-						else if(cocheaux[op-1].rep[k].estado == 1){
+						else if(cocheaux[op-1].rep[k].estado == 2){
 							printf("\tESTADO: En proceso.\n\n");
 						}
 						else{
 							printf("\tESTADO: Terminado.\n\n");
 						}
+						sumatotal += pint[cocheaux[op-1].rep[k].orden].total;
 					}
 				}
+				printf("\nPRESUPUESTO: %g€\n\n", sumatotal);
 			}
 			system("pause");
 			
@@ -1941,6 +2273,9 @@ void ConsultarEstado(int x, char *user){
 				        printf("\nTecla no reconocida.\n\n");
 				        system("pause");
 				    }
+				    else if(res == 1){
+				    	sumatotal = 0;
+					}
 				}
 				while(res != 0 && res != 1);
 			}

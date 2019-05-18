@@ -2,4 +2,4 @@ Laura Gómez Serranillo,Laura33,F,13/7/1968,tristres
 Luis Prieto Lobato,luprilo,O,20/5/1954,dentífrico
 Jorge Martínez Bris,jorgito12,M,12/4/1984,merengue
 Javier Fernández Ochoa,javiruli,M,28/1/2001,Javi18
-Luis Andrés del Manzano Luque,lucho_apple,O,15/9/1957,luquendo
+Luis Andrés Manzano Luque,lucho_apple,O,15/9/1957,luquendo

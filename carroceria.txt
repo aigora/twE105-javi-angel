@@ -1,7 +1,8 @@
-1,Desmontar paragolpes,0.7,0
-2,Montar paragolpes,0.8,0
-3,Cambiar matrícula,0.1,12
-4,Cambiar luna delantera,1.2,215
-5,Cambiar elevaluna eléctrico,1.5,120
-6,Montar kit 'camping',3.2,470
-7,Instalar equipo multimedia,3.2,260
+1,Desmontar paragolpes,0.7,0,43.75
+2,Montar paragolpes,0.8,0,50
+3,Cambiar matrícula,0.1,12,18.25
+4,Cambiar luna delantera,1.2,215,290
+5,Cambiar elevalunas eléctrico,1.5,120,213.75
+6,Montar kit camping,6,470,845
+7,Instalar equipo multimedia,3.2,260,460
+8,Montar kit aerodinámica,7,850,1287.5
