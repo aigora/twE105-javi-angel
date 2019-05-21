@@ -557,7 +557,7 @@ void CrearEmpleado(){
         	
 			fprintf(empleados, "%s,%s,%s\n", nom, ocup, cont);
 	    	animacionGuardar();
-			printf("\n¡Empleado registrado correctamente!\n\n");
+			printf("¡Empleado registrado correctamente!\n\n");
 			system("pause");
 			i = 0;//Ruta de escape
 		}
@@ -614,7 +614,7 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	    	scanf("%c", &sexo);
 	    	fflush(stdin);
 	    	if(sexo != 'M' && sexo != 'F' && sexo != 'O'){
-	    		printf("\nIntroduzca de nuevo el sexo.\n\n");
+	    		printf("\nIntroduzca de nuevo el sexo.\n");
 			}
 		}
 		while(sexo != 'M' && sexo != 'F' && sexo != 'O');
@@ -624,7 +624,7 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 	    	fflush(stdin);
 	    	if(((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && (dia < 1 || dia > 31)) || (mes == 2 && (dia < 1 || dia > 28)) 
 			|| ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && (dia < 1 || dia > 30)) || (mes < 1 || mes > 12 || ano < 1900 || ano > 2001)){
-	    		printf("\nIntroduzca de nuevo la fecha.\n\n");
+	    		printf("\nIntroduzca de nuevo la fecha.\n");
 			}
 		}
 		while(((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && (dia < 1 || dia > 31)) || (mes == 2 && (dia < 1 || dia > 28)) 
@@ -699,7 +699,6 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 				}
 			}
 	   	    while(kms < 1 || kms > 1000000);
-	    	animacionGuardar();
         	system("cls");
         	printf("DATACOCHES\n\n");
 	        printf("NUEVO CLIENTE\n\n");
@@ -721,7 +720,7 @@ void CrearCliente(){//Mismo funcionamiento que NuevoEmpleado()
 		    }
 	        while(res != 'n' && res != 'N' && res != 's' && res != 'S');
 		}
-		while(res != 's' || res != 'S');
+		while(res == 'n' || res == 'N');
 		
 		animacionGuardar(); 
 		fprintf(vehiculos, "%s,%s,%s,%s,%i/0\n", nom, mar, mod, mat, kms);
@@ -941,9 +940,15 @@ void DatosVehiculo(){
 			    				fflush(stdin);
 			    				break;
 			    			case 4:
-								printf("\nIntroduzca los kilómetros: ");
-			    				scanf("%i", &coche[i].kilometros);
-			    				fflush(stdin);
+			    				do{
+									printf("\nIntroduzca los kilómetros: ");
+				    				scanf("%i", &coche[i].kilometros);
+				    				fflush(stdin);
+				    				if(coche[i].kilometros < 0 || coche[i].kilometros > 1000000){
+				    					printf("Valor no premitido.\n");
+									}
+								}
+								while(coche[i].kilometros < 0 || coche[i].kilometros > 1000000);
 			    				break;
 			    			case 0:
 			    				res2 = 's';
@@ -2181,7 +2186,7 @@ void ConsultarEstado(int x, char *user){
 					}
 				}
 				if(n > 1){
-					printf("Indique el vehículo: ");
+					printf("Indique el número de vehículo: ");
 					scanf("%i", &op);
 				    fflush(stdin);
 				    if((op != 1 && op != 2 && op != 3 && op != 4 && op != 5) || (op > n)){
